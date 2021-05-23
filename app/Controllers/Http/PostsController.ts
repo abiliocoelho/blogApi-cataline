@@ -4,7 +4,8 @@ import { StoreValidator, UpdateValidator } from 'App/Validators/Post'
 
 export default class PostsController {
   public async index({}: HttpContextContract) {
-    const posts = Post.query().preload('author')
+    const posts = await Post.query().preload('author')
+    await posts.map((post) => console.log(post.serialize()))
     return posts
   }
 
@@ -19,6 +20,7 @@ export default class PostsController {
   public async show({ params }: HttpContextContract) {
     const post = await Post.findOrFail(params.id)
     await post.load('author')
+    console.log(post)
     return post
   }
 
