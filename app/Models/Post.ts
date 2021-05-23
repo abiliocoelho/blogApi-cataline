@@ -43,7 +43,7 @@ export default class Post extends BaseModel {
       ...this.serializeRelations(
         {
           author: {
-            fields: ['id', 'email', 'firstName']
+            fields: ['id', 'email', 'name']
           }
         },
         false
