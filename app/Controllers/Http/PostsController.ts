@@ -20,7 +20,6 @@ export default class PostsController {
   public async show({ params }: HttpContextContract) {
     const post = await Post.findOrFail(params.id)
     await post.load('author')
-    console.log(post)
     return post
   }
 
